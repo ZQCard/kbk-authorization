@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/biz"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/biz"
 	"github.com/go-kratos/kratos/v2/log"
 )
 

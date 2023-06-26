@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/biz"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/biz"
 )
 
 func (s *AuthorizationService) SetRolesForUser(ctx context.Context, req *v1.SetRolesForUserReq) (*v1.CheckResponse, error) {

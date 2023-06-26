@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/domain"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/domain"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

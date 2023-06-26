@@ -12,10 +12,10 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/go-kratos/swagger-api/openapiv2"
 
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/conf"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/service"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/pkg/middleware/requestInfo"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/conf"
+	"github.com/ZQCard/kbk-authorization/internal/service"
+	"github.com/ZQCard/kbk-authorization/pkg/middleware/requestInfo"
 )
 
 // NewHTTPServer new an HTTP server.

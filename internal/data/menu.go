@@ -8,10 +8,10 @@ import (
 	"github.com/go-kratos/kratos/v2/log"
 	"gorm.io/gorm"
 
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/biz"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/domain"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/pkg/utils/timeHelper"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/biz"
+	"github.com/ZQCard/kbk-authorization/internal/domain"
+	"github.com/ZQCard/kbk-authorization/pkg/utils/timeHelper"
 )
 
 type MenuEntity struct {

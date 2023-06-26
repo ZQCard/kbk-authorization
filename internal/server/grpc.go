@@ -1,10 +1,10 @@
 package server
 
 import (
-	v1 "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/authorization/v1"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/conf"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/service"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/pkg/middleware/requestInfo"
+	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
+	"github.com/ZQCard/kbk-authorization/internal/conf"
+	"github.com/ZQCard/kbk-authorization/internal/service"
+	"github.com/ZQCard/kbk-authorization/pkg/middleware/requestInfo"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/logging"

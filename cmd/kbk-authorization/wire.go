@@ -6,11 +6,11 @@
 package main
 
 import (
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/biz"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/conf"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/data"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/server"
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/service"
+	"github.com/ZQCard/kbk-authorization/internal/biz"
+	"github.com/ZQCard/kbk-authorization/internal/conf"
+	"github.com/ZQCard/kbk-authorization/internal/data"
+	"github.com/ZQCard/kbk-authorization/internal/server"
+	"github.com/ZQCard/kbk-authorization/internal/service"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"

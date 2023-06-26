@@ -126,4 +126,4 @@ initNewService:
 .PHONY: docker
 docker:
 	docker build -t kbk-authorization .
-	docker run -itd --name kbk-authorization -p 8020:8000 -p 9020:9000 -v /data/project/kratos-base-kit/kbk-authorization/configs/:/data/conf kbk-authorization
+	docker run -itd --name kbk-authorization -p 8020:8000 -p 9020:9000 -v /data/project/kbk-authorization/configs/:/data/conf kbk-authorization

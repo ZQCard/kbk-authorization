@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/log"
 
-	"github.com/ZQCard/kratos-base-kit/kbk-authorization/internal/domain"
+	"github.com/ZQCard/kbk-authorization/internal/domain"
 )
 
 type ApiRepo interface {

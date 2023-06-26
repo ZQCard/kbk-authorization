@@ -1,4 +1,4 @@
-module github.com/ZQCard/kratos-base-kit/kbk-authorization
+module github.com/ZQCard/kbk-authorization
 
 go 1.20
 

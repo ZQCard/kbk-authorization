@@ -4,7 +4,7 @@ package authorization.v1;
 
 import "errors/errors.proto";
 
-option go_package = "github.com/ZQCard/kratos-base-kit/kbk-authorization/api/v1/authorization";
+option go_package = "github.com/ZQCard/kbk-authorization/api/v1/authorization";
 
 enum ErrorReason {
   option (errors.default_code) = 500;
