@@ -1,0 +1,956 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: 权限服务
+    description: 权限服务
+    contact:
+        name: card
+        email: 445864742@qq.com
+    version: 0.0.1
+paths:
+    /api:
+        put:
+            tags:
+                - AuthorizationService
+            description: Api更新
+            operationId: AuthorizationService_UpdateApi
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.UpdateApiReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+        post:
+            tags:
+                - AuthorizationService
+            description: Api创建
+            operationId: AuthorizationService_CreateApi
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.CreateApiReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.Api'
+        delete:
+            tags:
+                - AuthorizationService
+            description: Api删除
+            operationId: AuthorizationService_DeleteApi
+            parameters:
+                - name: id
+                  in: query
+                  description: 主键id
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /apiAll:
+        get:
+            tags:
+                - AuthorizationService
+            description: Api列表
+            operationId: AuthorizationService_GetApiListAll
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetApiListAllRes'
+    /apis:
+        get:
+            tags:
+                - AuthorizationService
+            description: Api列表
+            operationId: AuthorizationService_GetApiList
+            parameters:
+                - name: page
+                  in: query
+                  description: 主键id
+                  schema:
+                    type: integer
+                    format: int64
+                - name: pageSize
+                  in: query
+                  description: 页记录数
+                  schema:
+                    type: integer
+                    format: int64
+                - name: name
+                  in: query
+                  description: 名称
+                  schema:
+                    type: string
+                - name: group
+                  in: query
+                  description: 分组
+                  schema:
+                    type: string
+                - name: method
+                  in: query
+                  description: 请求方式
+                  schema:
+                    type: string
+                - name: path
+                  in: query
+                  description: 请求路径
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetApiListPageRes'
+    /auth:
+        get:
+            tags:
+                - AuthorizationService
+            description: 检查权限
+            operationId: AuthorizationService_CheckAuthorization
+            parameters:
+                - name: sub
+                  in: query
+                  description: 主题
+                  schema:
+                    type: string
+                - name: obj
+                  in: query
+                  description: 操作对象
+                  schema:
+                    type: string
+                - name: act
+                  in: query
+                  description: 操作行为
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /deleteRoleForUser:
+        delete:
+            tags:
+                - AuthorizationService
+            description: 用户角色 - 删除(单个)
+            operationId: AuthorizationService_DeleteRoleForUser
+            parameters:
+                - name: username
+                  in: query
+                  description: 用户名
+                  schema:
+                    type: string
+                - name: role
+                  in: query
+                  description: 角色名
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /deleteRolesForUser:
+        delete:
+            tags:
+                - AuthorizationService
+            description: 用户角色 - 删除(全部)
+            operationId: AuthorizationService_DeleteRolesForUser
+            parameters:
+                - name: username
+                  in: query
+                  description: 用户名
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /getPolicies:
+        get:
+            tags:
+                - AuthorizationService
+            description: 角色权限策略 - 列表
+            operationId: AuthorizationService_GetPolicies
+            parameters:
+                - name: role
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetPoliciesRes'
+    /getRolesForUser:
+        get:
+            tags:
+                - AuthorizationService
+            description: 用户角色 - 列表
+            operationId: AuthorizationService_GetRolesForUser
+            parameters:
+                - name: username
+                  in: query
+                  description: 用户名
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetRolesForUserRes'
+    /getUsersForRole:
+        get:
+            tags:
+                - AuthorizationService
+            description: 角色用户 - 列表
+            operationId: AuthorizationService_GetUsersForRole
+            parameters:
+                - name: role
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetUsersForRoleRes'
+    /menu:
+        put:
+            tags:
+                - AuthorizationService
+            description: 菜单 - 更新
+            operationId: AuthorizationService_UpdateMenu
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.UpdateMenuReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+        post:
+            tags:
+                - AuthorizationService
+            description: 菜单 - 创建
+            operationId: AuthorizationService_CreateMenu
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.CreateMenuReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.Menu'
+        delete:
+            tags:
+                - AuthorizationService
+            description: 菜单 - 删除
+            operationId: AuthorizationService_DeleteMenu
+            parameters:
+                - name: id
+                  in: query
+                  description: 主键id
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /menuAll:
+        get:
+            tags:
+                - AuthorizationService
+            description: 菜单列表 - 全部
+            operationId: AuthorizationService_GetMenuAll
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetMenuTreeRes'
+    /menuTree:
+        get:
+            tags:
+                - AuthorizationService
+            description: 菜单列表 - 树状结构
+            operationId: AuthorizationService_GetMenuTree
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetMenuTreeRes'
+    /role:
+        put:
+            tags:
+                - AuthorizationService
+            description: 角色更新
+            operationId: AuthorizationService_UpdateRole
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.UpdateRoleReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+        post:
+            tags:
+                - AuthorizationService
+            description: 角色创建
+            operationId: AuthorizationService_CreateRole
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.CreateRoleReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.Role'
+        delete:
+            tags:
+                - AuthorizationService
+            description: 角色删除
+            operationId: AuthorizationService_DeleteRole
+            parameters:
+                - name: id
+                  in: query
+                  description: 主键id
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /roleAll:
+        get:
+            tags:
+                - AuthorizationService
+            description: 全部角色
+            operationId: AuthorizationService_GetRoleAll
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetRoleAllRes'
+    /roleMenu:
+        get:
+            tags:
+                - AuthorizationService
+            description: 角色菜单 - 列表
+            operationId: AuthorizationService_GetRoleMenu
+            parameters:
+                - name: role
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetMenuTreeRes'
+        post:
+            tags:
+                - AuthorizationService
+            description: 角色菜单 - 更新
+            operationId: AuthorizationService_SaveRoleMenu
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.SaveRoleMenuReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /roleMenuBtn:
+        get:
+            tags:
+                - AuthorizationService
+            description: 角色菜单按钮 - 列表
+            operationId: AuthorizationService_GetRoleMenuBtn
+            parameters:
+                - name: roleId
+                  in: query
+                  description: 角色id
+                  schema:
+                    type: integer
+                    format: int64
+                - name: roleName
+                  in: query
+                  description: 角色名称
+                  schema:
+                    type: string
+                - name: menuId
+                  in: query
+                  description: 菜单id
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetRoleMenuBtnRes'
+        post:
+            tags:
+                - AuthorizationService
+            description: 角色菜单按钮 - 保存
+            operationId: AuthorizationService_SaveRoleMenuBtn
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.SaveRoleMenuBtnReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /roleMenuTree:
+        get:
+            tags:
+                - AuthorizationService
+            description: 角色菜单 - 树状结构
+            operationId: AuthorizationService_GetRoleMenuTree
+            parameters:
+                - name: role
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.GetMenuTreeRes'
+    /setRolesForUser:
+        post:
+            tags:
+                - AuthorizationService
+            description: 用户角色 - 设置
+            operationId: AuthorizationService_SetRolesForUser
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.SetRolesForUserReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+    /updatePolicies:
+        post:
+            tags:
+                - AuthorizationService
+            description: 角色权限策略 - 设置
+            operationId: AuthorizationService_UpdatePolicies
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/authorization.v1.UpdatePoliciesReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+components:
+    schemas:
+        authorization.v1.Api:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                name:
+                    type: string
+                    description: 名称
+                group:
+                    type: string
+                    description: 分组
+                method:
+                    type: string
+                    description: 请求方式
+                path:
+                    type: string
+                    description: 请求路径
+                createdAt:
+                    type: string
+                    description: 创建时间
+                updatedAt:
+                    type: string
+                    description: 更新时间
+                domain:
+                    type: string
+                    description: 域
+            description: 响应 - API信息
+        authorization.v1.CheckResponse:
+            type: object
+            properties:
+                success:
+                    type: boolean
+            description: 响应 - 检查是否处理成功
+        authorization.v1.CreateApiReq:
+            type: object
+            properties:
+                name:
+                    type: string
+                    description: 名称
+                group:
+                    type: string
+                    description: 分组
+                method:
+                    type: string
+                    description: 请求方式
+                path:
+                    type: string
+                    description: 请求路径
+            description: 请求 - API创建
+        authorization.v1.CreateMenuReq:
+            type: object
+            properties:
+                parentId:
+                    type: integer
+                    description: 父级id
+                    format: int64
+                path:
+                    type: string
+                    description: 前端路径
+                name:
+                    type: string
+                    description: 菜单名
+                hidden:
+                    type: boolean
+                    description: 是否隐藏
+                component:
+                    type: string
+                    description: 前端文件路径
+                sort:
+                    type: integer
+                    description: 排序
+                    format: int64
+                title:
+                    type: string
+                    description: 页面名称
+                icon:
+                    type: string
+                    description: 菜单图标
+                menuBtns:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.MenuBtn'
+                    description: 菜单按钮列表
+                parentIds:
+                    type: string
+                    description: 父级id字符串 英文逗号分割
+            description: 请求 - 菜单创建
+        authorization.v1.CreateRoleReq:
+            type: object
+            properties:
+                name:
+                    type: string
+                    description: 名称
+            description: 请求 - 角色创建
+        authorization.v1.GetApiListAllRes:
+            type: object
+            properties:
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.Api'
+                    description: 列表
+            description: 响应 - API列表(所有)
+        authorization.v1.GetApiListPageRes:
+            type: object
+            properties:
+                total:
+                    type: integer
+                    description: 总数
+                    format: int64
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.Api'
+                    description: 列表
+            description: 响应 - API分页
+        authorization.v1.GetMenuTreeRes:
+            type: object
+            properties:
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.Menu'
+                    description: 菜单列表
+            description: 响应 - 菜单树列表
+        authorization.v1.GetPoliciesRes:
+            type: object
+            properties:
+                policyRules:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.PolicyRules'
+            description: 响应 - 权限策略列表
+        authorization.v1.GetRoleAllRes:
+            type: object
+            properties:
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.Role'
+                    description: 列表
+            description: 响应 - 角色列表(所有)
+        authorization.v1.GetRoleMenuBtnRes:
+            type: object
+            properties:
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.MenuBtn'
+                    description: 菜单按钮列表
+            description: 响应 - 角色菜单按钮列表
+        authorization.v1.GetRolesForUserRes:
+            type: object
+            properties:
+                roles:
+                    type: array
+                    items:
+                        type: string
+                    description: 角色列表
+            description: 响应 - 用户角色列表
+        authorization.v1.GetUsersForRoleRes:
+            type: object
+            properties:
+                users:
+                    type: array
+                    items:
+                        type: string
+                    description: 用户列表
+            description: 响应 - 角色用户列表
+        authorization.v1.Menu:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                parentId:
+                    type: integer
+                    description: 父级id
+                    format: int64
+                path:
+                    type: string
+                    description: 前端路径
+                name:
+                    type: string
+                    description: 菜单名
+                hidden:
+                    type: boolean
+                    description: 是否隐藏
+                component:
+                    type: string
+                    description: 前端文件路径
+                sort:
+                    type: integer
+                    description: 排序
+                    format: int64
+                title:
+                    type: string
+                    description: 页面名称
+                icon:
+                    type: string
+                    description: 菜单图标
+                createdAt:
+                    type: string
+                    description: 创建时间
+                updatedAt:
+                    type: string
+                    description: 更新时间
+                children:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.Menu'
+                    description: 子菜单
+                menuBtns:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.MenuBtn'
+                    description: 菜单按钮列表
+                parentIds:
+                    type: string
+                    description: 父级id字符串 英文逗号分割
+            description: 响应 - 菜单详情
+        authorization.v1.MenuBtn:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                menuId:
+                    type: integer
+                    description: 菜单id
+                    format: int64
+                name:
+                    type: string
+                    description: 按钮名称
+                description:
+                    type: string
+                    description: 描述
+                identifier:
+                    type: string
+                    description: 英文标识
+                createdAt:
+                    type: string
+                    description: 创建时间
+                updatedAt:
+                    type: string
+                    description: 更新时间
+            description: 响应 - 菜单按钮详情
+        authorization.v1.PolicyRules:
+            type: object
+            properties:
+                path:
+                    type: string
+                    description: operation路径
+                method:
+                    type: string
+                    description: 请求方式
+            description: 响应 - 权限策略
+        authorization.v1.Role:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                name:
+                    type: string
+                    description: 名称
+                createdAt:
+                    type: string
+                updatedAt:
+                    type: string
+                    description: 更新时间
+            description: 响应 - 角色信息
+        authorization.v1.SaveRoleMenuBtnReq:
+            type: object
+            properties:
+                roleId:
+                    type: integer
+                    description: 角色id
+                    format: int64
+                menuId:
+                    type: integer
+                    description: 菜单id
+                    format: int64
+                menuBtnIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int64
+                    description: 按钮id数组
+            description: 请求 - 角色菜单按钮保存
+        authorization.v1.SaveRoleMenuReq:
+            type: object
+            properties:
+                roleId:
+                    type: integer
+                    description: 角色id
+                    format: int64
+                menuIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int64
+                    description: 菜单id数组
+            description: 请求 - 设置角色菜单
+        authorization.v1.SetRolesForUserReq:
+            type: object
+            properties:
+                username:
+                    type: string
+                    description: 用户名
+                roles:
+                    type: array
+                    items:
+                        type: string
+                    description: 角色数组
+            description: 请求 - 设置用户角色
+        authorization.v1.UpdateApiReq:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                name:
+                    type: string
+                    description: 名称
+                group:
+                    type: string
+                    description: 分组
+                method:
+                    type: string
+                    description: 请求方式
+                path:
+                    type: string
+                    description: 请求路径
+            description: 请求 - API更新
+        authorization.v1.UpdateMenuReq:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                parentId:
+                    type: integer
+                    description: 父级id
+                    format: int64
+                path:
+                    type: string
+                    description: 前端路径
+                name:
+                    type: string
+                    description: 菜单名
+                hidden:
+                    type: boolean
+                    description: 是否隐藏
+                component:
+                    type: string
+                    description: 前端文件路径
+                sort:
+                    type: integer
+                    description: 排序
+                    format: int64
+                title:
+                    type: string
+                    description: 页面名称
+                icon:
+                    type: string
+                    description: 菜单图标
+                menuBtns:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.MenuBtn'
+                    description: 菜单按钮列表
+                parentIds:
+                    type: string
+                    description: 父级id字符串 英文逗号分割
+            description: 请求 - 菜单更新
+        authorization.v1.UpdatePoliciesReq:
+            type: object
+            properties:
+                role:
+                    type: string
+                    description: 角色名
+                policyRules:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/authorization.v1.PolicyRules'
+                    description: 权限策略
+            description: 请求 - 权限策略更新
+        authorization.v1.UpdateRoleReq:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: 主键id
+                    format: int64
+                name:
+                    type: string
+                    description: 名称
+            description: 请求 - 角色更新
+tags:
+    - name: AuthorizationService
