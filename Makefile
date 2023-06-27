@@ -125,6 +125,8 @@ initNewService:
 	@echo "project start success"
 .PHONY: docker	
 docker:
+	@git add .
+	@git commit -m "update"
 	@git pull
 	@docker build -t kbk-authorization .
 	@echo "docker build success"
@@ -135,5 +137,5 @@ docker:
     else \
         echo "Container kbk-authorization not found"; \
     fi
-	docker run -itd --name kbk-authorization -p 8000:8000 -p 9000:9000 -v /data/project/kratos-base-kit/kbk-authorization/configs/:/data/conf kbk-authorization
+	docker run -itd --name kbk-authorization -p 8020:8000 -p 9020:9000 -v /data/project/kratos-base-kit/kbk-authorization/configs/:/data/conf kbk-authorization
 	@echo "docker start success"
