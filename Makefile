@@ -123,10 +123,10 @@ initNewService:
 # 拉取引用包
 	go mod tidy
 	@echo "project start success"
-.PHONY: docker	
+.PHONY: docker
 docker:
 	@git add .
-	@git commit -m "update"
+	@git commit -m 'update'
 	@git pull
 	@docker build -t kbk-authorization .
 	@echo "docker build success"
