@@ -128,6 +128,9 @@ func (r RoleRepo) UpdateRole(ctx context.Context, role *domain.Role) error {
 	if err != nil {
 		return err
 	}
+	if record.Name == role.Name {
+		return v1.ErrorBadRequest("名称不得修改")
+	}
 	// 更新字段
 	record.Name = role.Name
 	record.Domain = role.Domain
