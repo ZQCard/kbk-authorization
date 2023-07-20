@@ -18,7 +18,7 @@ type MenuEntity struct {
 	BaseFields
 	Domain    string           `gorm:"type:varchar(255);not null;comment:所在域"`
 	ParentId  int64            `gorm:"type:int;comment:父级id"`
-	ParentIds string           `gorm:"type:int;comment:父级id字符串 英文逗号分割"`
+	ParentIds string           `gorm:"type:varchar(255);comment:父级id字符串 英文逗号分割"`
 	Name      string           `gorm:"type:varchar(255);not null;comment:菜单名"`
 	Path      string           `gorm:"type:varchar(255);not null;comment:前端路径"`
 	Hidden    bool             `gorm:"not null;comment:是否隐藏 0否1是"`
