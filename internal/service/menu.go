@@ -140,7 +140,7 @@ func (s *AuthorizationService) CreateMenu(ctx context.Context, req *v1.CreateMen
 	return toPbMenu(menu), nil
 }
 
-func (s *AuthorizationService) UpdateMenu(ctx context.Context, req *v1.UpdateMenuReq) (*v1.CheckResponse, error) {
+func (s *AuthorizationService) UpdateMenu(ctx context.Context, req *v1.UpdateMenuReq) (*emptypb.Empty, error) {
 	btns := []domain.MenuBtn{}
 	for _, v := range req.MenuBtns {
 		btns = append(btns, domain.MenuBtn{
@@ -164,24 +164,11 @@ func (s *AuthorizationService) UpdateMenu(ctx context.Context, req *v1.UpdateMen
 		Icon:      req.Icon,
 		MenuBtns:  btns,
 	}
-
-	err := s.menuUsecase.UpdateMenu(ctx, bc)
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{
-		Success: true,
-	}, nil
+	return &emptypb.Empty{}, s.menuUsecase.UpdateMenu(ctx, bc)
 }
 
-func (s *AuthorizationService) DeleteMenu(ctx context.Context, req *v1.IdReq) (*v1.CheckResponse, error) {
-	err := s.menuUsecase.DeleteMenu(ctx, req.Id)
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{
-		Success: true,
-	}, nil
+func (s *AuthorizationService) DeleteMenu(ctx context.Context, req *v1.IdReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.menuUsecase.DeleteMenu(ctx, req.Id)
 }
 
 func toPBMenuBtn(btn domain.MenuBtn) *v1.MenuBtn {
@@ -267,14 +254,8 @@ func (s *AuthorizationService) GetRoleMenu(ctx context.Context, req *v1.RoleName
 		List: list,
 	}, nil
 }
-func (s *AuthorizationService) SaveRoleMenu(ctx context.Context, req *v1.SaveRoleMenuReq) (*v1.CheckResponse, error) {
-	err := s.menuUsecase.SaveRoleMenu(ctx, req.RoleId, req.MenuIds)
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{
-		Success: true,
-	}, nil
+func (s *AuthorizationService) SaveRoleMenu(ctx context.Context, req *v1.SaveRoleMenuReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.menuUsecase.SaveRoleMenu(ctx, req.RoleId, req.MenuIds)
 }
 
 func (s *AuthorizationService) GetRoleMenuBtn(ctx context.Context, req *v1.GetRoleMenuBtnReq) (*v1.GetRoleMenuBtnRes, error) {
@@ -293,12 +274,6 @@ func (s *AuthorizationService) GetRoleMenuBtn(ctx context.Context, req *v1.GetRo
 
 }
 
-func (s *AuthorizationService) SaveRoleMenuBtn(ctx context.Context, req *v1.SaveRoleMenuBtnReq) (*v1.CheckResponse, error) {
-	err := s.menuUsecase.SaveRoleMenuBtn(ctx, req.RoleId, req.MenuId, req.MenuBtnIds)
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{
-		Success: true,
-	}, nil
+func (s *AuthorizationService) SaveRoleMenuBtn(ctx context.Context, req *v1.SaveRoleMenuBtnReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.menuUsecase.SaveRoleMenuBtn(ctx, req.RoleId, req.MenuId, req.MenuBtnIds)
 }

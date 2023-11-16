@@ -53,28 +53,20 @@ func (s *AuthorizationService) CreateApi(ctx context.Context, req *v1.CreateApiR
 	return toPbApi(res), nil
 }
 
-func (s *AuthorizationService) UpdateApi(ctx context.Context, req *v1.UpdateApiReq) (*v1.CheckResponse, error) {
-	err := s.apiUsecase.UpdateApi(ctx, &domain.Api{
+func (s *AuthorizationService) UpdateApi(ctx context.Context, req *v1.UpdateApiReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.apiUsecase.UpdateApi(ctx, &domain.Api{
 		Id:     req.Id,
 		Name:   req.Name,
 		Group:  req.Group,
 		Method: req.Method,
 		Path:   req.Path,
 	})
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{Success: true}, nil
 }
 
-func (s *AuthorizationService) DeleteApi(ctx context.Context, req *v1.DeleteApiReq) (*v1.CheckResponse, error) {
-	err := s.apiUsecase.DeleteApi(ctx, &domain.Api{
+func (s *AuthorizationService) DeleteApi(ctx context.Context, req *v1.DeleteApiReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.apiUsecase.DeleteApi(ctx, &domain.Api{
 		Id: req.Id,
 	})
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{Success: true}, nil
 }
 
 func toPbApi(api *domain.Api) *v1.Api {

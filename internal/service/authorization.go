@@ -5,7 +5,9 @@ import (
 
 	v1 "github.com/ZQCard/kbk-authorization/api/authorization/v1"
 	"github.com/ZQCard/kbk-authorization/internal/biz"
+	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/log"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type AuthorizationService struct {
@@ -33,13 +35,13 @@ func NewAuthorizationService(
 	}
 }
 
-func (s *AuthorizationService) CheckAuthorization(ctx context.Context, req *v1.CheckAuthorizationReq) (*v1.CheckResponse, error) {
-
+func (s *AuthorizationService) CheckAuthorization(ctx context.Context, req *v1.CheckAuthorizationReq) (*emptypb.Empty, error) {
 	success, err := s.casbinUsecase.CheckAuthorization(ctx, req.Sub, req.Obj, req.Act)
 	if err != nil {
 		return nil, err
 	}
-	return &v1.CheckResponse{
-		Success: success,
-	}, err
+	if !success {
+		return nil, errors.Forbidden("Unauthorized", "暂无权限")
+	}
+	return &emptypb.Empty{}, nil
 }

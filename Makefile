@@ -60,7 +60,7 @@ errors:
 .PHONY: build
 # build
 build:
-	mkdir -p bin/ && go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/ ./...
+	mkdir -p bin/ && GOPROXY=https://goproxy.cn CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/ ./...
 
 .PHONY: generate
 # generate
@@ -123,19 +123,3 @@ initNewService:
 # 拉取引用包
 	go mod tidy
 	@echo "project start success"
-.PHONY: docker
-docker:
-	@git add .
-	@git commit -m 'update'
-	@git pull
-	@docker build -t kbk-authorization .
-	@echo "docker build success"
-	@container_id=$$(docker ps -a -f name=kbk-authorization -q); \
-    if [ -n "$$container_id" ]; then \
-        docker rm -f "$$container_id"; \
-        echo "Container kbk-authorization deleted"; \
-    else \
-        echo "Container kbk-authorization not found"; \
-    fi
-	docker run -itd --name kbk-authorization -p 8020:8000 -p 9020:9000 -v /data/project/kratos-base-kit/kbk-authorization/configs/:/data/conf kbk-authorization
-	@echo "docker start success"

@@ -31,25 +31,17 @@ func (s *AuthorizationService) CreateRole(ctx context.Context, req *v1.CreateRol
 	return toPbRole(res), nil
 }
 
-func (s *AuthorizationService) UpdateRole(ctx context.Context, req *v1.UpdateRoleReq) (*v1.CheckResponse, error) {
-	err := s.roleUsecase.UpdateRole(ctx, &domain.Role{
+func (s *AuthorizationService) UpdateRole(ctx context.Context, req *v1.UpdateRoleReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.roleUsecase.UpdateRole(ctx, &domain.Role{
 		Id:   req.Id,
 		Name: req.Name,
 	})
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{Success: true}, nil
 }
 
-func (s *AuthorizationService) DeleteRole(ctx context.Context, req *v1.DeleteRoleReq) (*v1.CheckResponse, error) {
-	err := s.roleUsecase.DeleteRole(ctx, &domain.Role{
+func (s *AuthorizationService) DeleteRole(ctx context.Context, req *v1.DeleteRoleReq) (*emptypb.Empty, error) {
+	return &emptypb.Empty{}, s.roleUsecase.DeleteRole(ctx, &domain.Role{
 		Id: req.Id,
 	})
-	if err != nil {
-		return nil, err
-	}
-	return &v1.CheckResponse{Success: true}, nil
 }
 
 func toPbRole(role *domain.Role) *v1.Role {

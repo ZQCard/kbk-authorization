@@ -49,15 +49,15 @@ const OperationAuthorizationServiceUpdatePolicies = "/authorization.v1.Authoriza
 const OperationAuthorizationServiceUpdateRole = "/authorization.v1.AuthorizationService/UpdateRole"
 
 type AuthorizationServiceHTTPServer interface {
-	CheckAuthorization(context.Context, *CheckAuthorizationReq) (*CheckResponse, error)
+	CheckAuthorization(context.Context, *CheckAuthorizationReq) (*emptypb.Empty, error)
 	CreateApi(context.Context, *CreateApiReq) (*Api, error)
 	CreateMenu(context.Context, *CreateMenuReq) (*Menu, error)
 	CreateRole(context.Context, *CreateRoleReq) (*Role, error)
-	DeleteApi(context.Context, *DeleteApiReq) (*CheckResponse, error)
-	DeleteMenu(context.Context, *IdReq) (*CheckResponse, error)
-	DeleteRole(context.Context, *DeleteRoleReq) (*CheckResponse, error)
-	DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*CheckResponse, error)
-	DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*CheckResponse, error)
+	DeleteApi(context.Context, *DeleteApiReq) (*emptypb.Empty, error)
+	DeleteMenu(context.Context, *IdReq) (*emptypb.Empty, error)
+	DeleteRole(context.Context, *DeleteRoleReq) (*emptypb.Empty, error)
+	DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*emptypb.Empty, error)
+	DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*emptypb.Empty, error)
 	GetApiList(context.Context, *GetApiListReq) (*GetApiListPageRes, error)
 	GetApiListAll(context.Context, *emptypb.Empty) (*GetApiListAllRes, error)
 	GetMenuAll(context.Context, *emptypb.Empty) (*GetMenuTreeRes, error)
@@ -69,13 +69,13 @@ type AuthorizationServiceHTTPServer interface {
 	GetRoleMenuTree(context.Context, *RoleNameReq) (*GetMenuTreeRes, error)
 	GetRolesForUser(context.Context, *GetRolesForUserReq) (*GetRolesForUserRes, error)
 	GetUsersForRole(context.Context, *RoleNameReq) (*GetUsersForRoleRes, error)
-	SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*CheckResponse, error)
-	SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*CheckResponse, error)
-	SetRolesForUser(context.Context, *SetRolesForUserReq) (*CheckResponse, error)
-	UpdateApi(context.Context, *UpdateApiReq) (*CheckResponse, error)
-	UpdateMenu(context.Context, *UpdateMenuReq) (*CheckResponse, error)
-	UpdatePolicies(context.Context, *UpdatePoliciesReq) (*CheckResponse, error)
-	UpdateRole(context.Context, *UpdateRoleReq) (*CheckResponse, error)
+	SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*emptypb.Empty, error)
+	SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*emptypb.Empty, error)
+	SetRolesForUser(context.Context, *SetRolesForUserReq) (*emptypb.Empty, error)
+	UpdateApi(context.Context, *UpdateApiReq) (*emptypb.Empty, error)
+	UpdateMenu(context.Context, *UpdateMenuReq) (*emptypb.Empty, error)
+	UpdatePolicies(context.Context, *UpdatePoliciesReq) (*emptypb.Empty, error)
+	UpdateRole(context.Context, *UpdateRoleReq) (*emptypb.Empty, error)
 }
 
 func RegisterAuthorizationServiceHTTPServer(s *http.Server, srv AuthorizationServiceHTTPServer) {
@@ -123,7 +123,7 @@ func _AuthorizationService_CheckAuthorization0_HTTP_Handler(srv AuthorizationSer
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -180,7 +180,7 @@ func _AuthorizationService_UpdateRole0_HTTP_Handler(srv AuthorizationServiceHTTP
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -199,7 +199,7 @@ func _AuthorizationService_DeleteRole0_HTTP_Handler(srv AuthorizationServiceHTTP
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -256,7 +256,7 @@ func _AuthorizationService_SetRolesForUser0_HTTP_Handler(srv AuthorizationServic
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -275,7 +275,7 @@ func _AuthorizationService_DeleteRoleForUser0_HTTP_Handler(srv AuthorizationServ
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -294,7 +294,7 @@ func _AuthorizationService_DeleteRolesForUser0_HTTP_Handler(srv AuthorizationSer
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -332,7 +332,7 @@ func _AuthorizationService_UpdatePolicies0_HTTP_Handler(srv AuthorizationService
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -408,7 +408,7 @@ func _AuthorizationService_UpdateApi0_HTTP_Handler(srv AuthorizationServiceHTTPS
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -427,7 +427,7 @@ func _AuthorizationService_DeleteApi0_HTTP_Handler(srv AuthorizationServiceHTTPS
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -503,7 +503,7 @@ func _AuthorizationService_UpdateMenu0_HTTP_Handler(srv AuthorizationServiceHTTP
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -522,7 +522,7 @@ func _AuthorizationService_DeleteMenu0_HTTP_Handler(srv AuthorizationServiceHTTP
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -579,7 +579,7 @@ func _AuthorizationService_SaveRoleMenu0_HTTP_Handler(srv AuthorizationServiceHT
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
@@ -617,21 +617,21 @@ func _AuthorizationService_SaveRoleMenuBtn0_HTTP_Handler(srv AuthorizationServic
 		if err != nil {
 			return err
 		}
-		reply := out.(*CheckResponse)
+		reply := out.(*emptypb.Empty)
 		return ctx.Result(200, reply)
 	}
 }
 
 type AuthorizationServiceHTTPClient interface {
-	CheckAuthorization(ctx context.Context, req *CheckAuthorizationReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
+	CheckAuthorization(ctx context.Context, req *CheckAuthorizationReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
 	CreateApi(ctx context.Context, req *CreateApiReq, opts ...http.CallOption) (rsp *Api, err error)
 	CreateMenu(ctx context.Context, req *CreateMenuReq, opts ...http.CallOption) (rsp *Menu, err error)
 	CreateRole(ctx context.Context, req *CreateRoleReq, opts ...http.CallOption) (rsp *Role, err error)
-	DeleteApi(ctx context.Context, req *DeleteApiReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	DeleteMenu(ctx context.Context, req *IdReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	DeleteRole(ctx context.Context, req *DeleteRoleReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	DeleteRoleForUser(ctx context.Context, req *DeleteRoleForUserReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	DeleteRolesForUser(ctx context.Context, req *DeleteRolesForUserReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
+	DeleteApi(ctx context.Context, req *DeleteApiReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	DeleteMenu(ctx context.Context, req *IdReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	DeleteRole(ctx context.Context, req *DeleteRoleReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	DeleteRoleForUser(ctx context.Context, req *DeleteRoleForUserReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	DeleteRolesForUser(ctx context.Context, req *DeleteRolesForUserReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
 	GetApiList(ctx context.Context, req *GetApiListReq, opts ...http.CallOption) (rsp *GetApiListPageRes, err error)
 	GetApiListAll(ctx context.Context, req *emptypb.Empty, opts ...http.CallOption) (rsp *GetApiListAllRes, err error)
 	GetMenuAll(ctx context.Context, req *emptypb.Empty, opts ...http.CallOption) (rsp *GetMenuTreeRes, err error)
@@ -643,13 +643,13 @@ type AuthorizationServiceHTTPClient interface {
 	GetRoleMenuTree(ctx context.Context, req *RoleNameReq, opts ...http.CallOption) (rsp *GetMenuTreeRes, err error)
 	GetRolesForUser(ctx context.Context, req *GetRolesForUserReq, opts ...http.CallOption) (rsp *GetRolesForUserRes, err error)
 	GetUsersForRole(ctx context.Context, req *RoleNameReq, opts ...http.CallOption) (rsp *GetUsersForRoleRes, err error)
-	SaveRoleMenu(ctx context.Context, req *SaveRoleMenuReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	SaveRoleMenuBtn(ctx context.Context, req *SaveRoleMenuBtnReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	SetRolesForUser(ctx context.Context, req *SetRolesForUserReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	UpdateApi(ctx context.Context, req *UpdateApiReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	UpdateMenu(ctx context.Context, req *UpdateMenuReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	UpdatePolicies(ctx context.Context, req *UpdatePoliciesReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
-	UpdateRole(ctx context.Context, req *UpdateRoleReq, opts ...http.CallOption) (rsp *CheckResponse, err error)
+	SaveRoleMenu(ctx context.Context, req *SaveRoleMenuReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	SaveRoleMenuBtn(ctx context.Context, req *SaveRoleMenuBtnReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	SetRolesForUser(ctx context.Context, req *SetRolesForUserReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	UpdateApi(ctx context.Context, req *UpdateApiReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	UpdateMenu(ctx context.Context, req *UpdateMenuReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	UpdatePolicies(ctx context.Context, req *UpdatePoliciesReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
+	UpdateRole(ctx context.Context, req *UpdateRoleReq, opts ...http.CallOption) (rsp *emptypb.Empty, err error)
 }
 
 type AuthorizationServiceHTTPClientImpl struct {
@@ -660,8 +660,8 @@ func NewAuthorizationServiceHTTPClient(client *http.Client) AuthorizationService
 	return &AuthorizationServiceHTTPClientImpl{client}
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/auth"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceCheckAuthorization))
@@ -712,8 +712,8 @@ func (c *AuthorizationServiceHTTPClientImpl) CreateRole(ctx context.Context, in 
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/api"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceDeleteApi))
@@ -725,8 +725,8 @@ func (c *AuthorizationServiceHTTPClientImpl) DeleteApi(ctx context.Context, in *
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) DeleteMenu(ctx context.Context, in *IdReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) DeleteMenu(ctx context.Context, in *IdReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/menu"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceDeleteMenu))
@@ -738,8 +738,8 @@ func (c *AuthorizationServiceHTTPClientImpl) DeleteMenu(ctx context.Context, in 
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/role"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceDeleteRole))
@@ -751,8 +751,8 @@ func (c *AuthorizationServiceHTTPClientImpl) DeleteRole(ctx context.Context, in 
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/deleteRoleForUser"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceDeleteRoleForUser))
@@ -764,8 +764,8 @@ func (c *AuthorizationServiceHTTPClientImpl) DeleteRoleForUser(ctx context.Conte
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/deleteRolesForUser"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceDeleteRolesForUser))
@@ -920,8 +920,8 @@ func (c *AuthorizationServiceHTTPClientImpl) GetUsersForRole(ctx context.Context
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/roleMenu"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceSaveRoleMenu))
@@ -933,8 +933,8 @@ func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenu(ctx context.Context, i
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/roleMenuBtn"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceSaveRoleMenuBtn))
@@ -946,8 +946,8 @@ func (c *AuthorizationServiceHTTPClientImpl) SaveRoleMenuBtn(ctx context.Context
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/setRolesForUser"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceSetRolesForUser))
@@ -959,8 +959,8 @@ func (c *AuthorizationServiceHTTPClientImpl) SetRolesForUser(ctx context.Context
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/api"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceUpdateApi))
@@ -972,8 +972,8 @@ func (c *AuthorizationServiceHTTPClientImpl) UpdateApi(ctx context.Context, in *
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/menu"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceUpdateMenu))
@@ -985,8 +985,8 @@ func (c *AuthorizationServiceHTTPClientImpl) UpdateMenu(ctx context.Context, in 
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/updatePolicies"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceUpdatePolicies))
@@ -998,8 +998,8 @@ func (c *AuthorizationServiceHTTPClientImpl) UpdatePolicies(ctx context.Context,
 	return &out, err
 }
 
-func (c *AuthorizationServiceHTTPClientImpl) UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...http.CallOption) (*CheckResponse, error) {
-	var out CheckResponse
+func (c *AuthorizationServiceHTTPClientImpl) UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...http.CallOption) (*emptypb.Empty, error) {
+	var out emptypb.Empty
 	pattern := "/role"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationAuthorizationServiceUpdateRole))

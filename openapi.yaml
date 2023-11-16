@@ -25,10 +25,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
         post:
             tags:
                 - AuthorizationService
@@ -62,10 +59,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /apiAll:
         get:
             tags:
@@ -150,10 +144,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /deleteRoleForUser:
         delete:
             tags:
@@ -174,10 +165,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /deleteRolesForUser:
         delete:
             tags:
@@ -193,10 +181,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /getPolicies:
         get:
             tags:
@@ -267,10 +252,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
         post:
             tags:
                 - AuthorizationService
@@ -304,10 +286,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /menuAll:
         get:
             tags:
@@ -349,10 +328,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
         post:
             tags:
                 - AuthorizationService
@@ -386,10 +362,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /roleAll:
         get:
             tags:
@@ -435,10 +408,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /roleMenuBtn:
         get:
             tags:
@@ -484,10 +454,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /roleMenuTree:
         get:
             tags:
@@ -521,10 +488,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
     /updatePolicies:
         post:
             tags:
@@ -540,10 +504,7 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/authorization.v1.CheckResponse'
+                    content: {}
 components:
     schemas:
         authorization.v1.Api:
@@ -575,12 +536,6 @@ components:
                     type: string
                     description: 域
             description: 响应 - API信息
-        authorization.v1.CheckResponse:
-            type: object
-            properties:
-                success:
-                    type: boolean
-            description: 响应 - 检查是否处理成功
         authorization.v1.CreateApiReq:
             type: object
             properties:

@@ -7,14 +7,13 @@
 package main
 
 import (
+	"github.com/go-kratos/kratos/v2"
+	"github.com/go-kratos/kratos/v2/log"
 	"github.com/ZQCard/kbk-authorization/internal/biz"
 	"github.com/ZQCard/kbk-authorization/internal/conf"
 	"github.com/ZQCard/kbk-authorization/internal/data"
 	"github.com/ZQCard/kbk-authorization/internal/server"
 	"github.com/ZQCard/kbk-authorization/internal/service"
-	"github.com/go-kratos/kratos/v2"
-	"github.com/go-kratos/kratos/v2/log"
-	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 import (
@@ -24,7 +23,7 @@ import (
 // Injectors from wire.go:
 
 // wireApp init kratos application.
-func wireApp(env *conf.Env, confServer *conf.Server, registry *conf.Registry, confData *conf.Data, bootstrap *conf.Bootstrap, logger log.Logger, tracerProvider *trace.TracerProvider) (*kratos.App, func(), error) {
+func wireApp(env *conf.Env, confServer *conf.Server, confData *conf.Data, bootstrap *conf.Bootstrap, logger log.Logger) (*kratos.App, func(), error) {
 	db := data.NewMysqlCmd(bootstrap, logger)
 	client := data.NewRedisClient(confData)
 	dataData, cleanup, err := data.NewData(bootstrap, db, client, logger)
@@ -41,9 +40,8 @@ func wireApp(env *conf.Env, confServer *conf.Server, registry *conf.Registry, co
 	apiUsecase := biz.NewApiUsecase(apiRepo, logger)
 	authorizationService := service.NewAuthorizationService(menuUsecase, casbinUsecase, roleUsecase, apiUsecase, logger)
 	grpcServer := server.NewGRPCServer(confServer, authorizationService, logger)
-	httpServer := server.NewHTTPServer(confServer, authorizationService, tracerProvider, logger)
-	registrar := data.NewRegistrar(registry)
-	app := newApp(logger, grpcServer, httpServer, registrar)
+	httpServer := server.NewHTTPServer(confServer, authorizationService, logger)
+	app := newApp(logger, grpcServer, httpServer)
 	return app, func() {
 		cleanup()
 	}, nil

@@ -11,7 +11,7 @@ import "openapiv3/annotations.proto";
 
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/ZQCard/kbk-authorization/api/v1/authorization";
+option go_package = "repo.exmaple.com/authorization/api/v1/authorization";
 
 option (openapi.v3.document) = {
     info: {
@@ -29,7 +29,7 @@ option (openapi.v3.document) = {
 // 示例服务
 service AuthorizationService {
     // 检查权限
-	rpc CheckAuthorization (CheckAuthorizationReq) returns (CheckResponse){
+	rpc CheckAuthorization (CheckAuthorizationReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             get:"/auth"  
         };
@@ -50,7 +50,7 @@ service AuthorizationService {
     };
 
     // 角色更新
-    rpc UpdateRole(UpdateRoleReq) returns(CheckResponse){
+    rpc UpdateRole(UpdateRoleReq) returns(google.protobuf.Empty){
         option (google.api.http) = { 
             put:"/role"  
             body:"*"
@@ -58,7 +58,7 @@ service AuthorizationService {
     };
 
     // 角色删除
-    rpc DeleteRole(DeleteRoleReq) returns(CheckResponse){
+    rpc DeleteRole(DeleteRoleReq) returns(google.protobuf.Empty){
         option (google.api.http) = { 
             delete:"/role"  
         };
@@ -80,7 +80,7 @@ service AuthorizationService {
     };
 
 	// 用户角色 - 设置
-	rpc SetRolesForUser (SetRolesForUserReq) returns (CheckResponse){
+	rpc SetRolesForUser (SetRolesForUserReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             post:"/setRolesForUser"  
             body:"*"
@@ -88,14 +88,14 @@ service AuthorizationService {
     };
 
 	// 用户角色 - 删除(单个)
-	rpc DeleteRoleForUser (DeleteRoleForUserReq) returns (CheckResponse){
+	rpc DeleteRoleForUser (DeleteRoleForUserReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             delete:"/deleteRoleForUser"  
         };
     };
 
 	// 用户角色 - 删除(全部) 
-	rpc DeleteRolesForUser (DeleteRolesForUserReq) returns (CheckResponse){
+	rpc DeleteRolesForUser (DeleteRolesForUserReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             delete:"/deleteRolesForUser"  
         };
@@ -109,7 +109,7 @@ service AuthorizationService {
     };
 
 	// 角色权限策略 - 设置
-	rpc UpdatePolicies (UpdatePoliciesReq) returns (CheckResponse){
+	rpc UpdatePolicies (UpdatePoliciesReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             post:"/updatePolicies"  
             body:"*"
@@ -139,7 +139,7 @@ service AuthorizationService {
     };
 
     // Api更新
-    rpc UpdateApi(UpdateApiReq) returns(CheckResponse){
+    rpc UpdateApi(UpdateApiReq) returns(google.protobuf.Empty){
         option (google.api.http) = { 
             put:"/api"  
             body:"*"
@@ -147,7 +147,7 @@ service AuthorizationService {
     };
 
     // Api删除
-    rpc DeleteApi(DeleteApiReq) returns(CheckResponse){
+    rpc DeleteApi(DeleteApiReq) returns(google.protobuf.Empty){
         option (google.api.http) = { 
             delete:"/api"  
         };
@@ -176,7 +176,7 @@ service AuthorizationService {
     };
 
 	// 菜单 - 更新
-	rpc UpdateMenu (UpdateMenuReq) returns (CheckResponse){
+	rpc UpdateMenu (UpdateMenuReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             put:"/menu"  
             body:"*"
@@ -184,7 +184,7 @@ service AuthorizationService {
     };
 
 	// 菜单 - 删除
-	rpc DeleteMenu (IdReq) returns (CheckResponse){
+	rpc DeleteMenu (IdReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             delete:"/menu"  
         };
@@ -205,7 +205,7 @@ service AuthorizationService {
     };
 
 	// 角色菜单 - 更新
-	rpc SaveRoleMenu (SaveRoleMenuReq) returns (CheckResponse){
+	rpc SaveRoleMenu (SaveRoleMenuReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             post:"/roleMenu"  
             body:"*"
@@ -219,7 +219,7 @@ service AuthorizationService {
         };
     };
 	// 角色菜单按钮 - 保存
-	rpc SaveRoleMenuBtn (SaveRoleMenuBtnReq) returns (CheckResponse){
+	rpc SaveRoleMenuBtn (SaveRoleMenuBtnReq) returns (google.protobuf.Empty){
         option (google.api.http) = { 
             post:"/roleMenuBtn"  
             body:"*"
@@ -236,12 +236,6 @@ message CheckAuthorizationReq {
     // 操作行为
 	string act = 3;
 }
-
-// 响应 - 检查是否处理成功
-message CheckResponse {
-    bool success = 1;
-}
-
 
 // 响应 - 角色列表(所有)
 message  GetRoleAllRes {

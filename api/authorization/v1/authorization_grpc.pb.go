@@ -56,29 +56,29 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthorizationServiceClient interface {
 	// 检查权限
-	CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 全部角色
 	GetRoleAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetRoleAllRes, error)
 	// 角色创建
 	CreateRole(ctx context.Context, in *CreateRoleReq, opts ...grpc.CallOption) (*Role, error)
 	// 角色更新
-	UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 角色删除
-	DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 用户角色 - 列表
 	GetRolesForUser(ctx context.Context, in *GetRolesForUserReq, opts ...grpc.CallOption) (*GetRolesForUserRes, error)
 	// 角色用户 - 列表
 	GetUsersForRole(ctx context.Context, in *RoleNameReq, opts ...grpc.CallOption) (*GetUsersForRoleRes, error)
 	// 用户角色 - 设置
-	SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 用户角色 - 删除(单个)
-	DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 用户角色 - 删除(全部)
-	DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 角色权限策略 - 列表
 	GetPolicies(ctx context.Context, in *RoleNameReq, opts ...grpc.CallOption) (*GetPoliciesRes, error)
 	// 角色权限策略 - 设置
-	UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Api列表
 	GetApiListAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetApiListAllRes, error)
 	// Api列表
@@ -86,9 +86,9 @@ type AuthorizationServiceClient interface {
 	// Api创建
 	CreateApi(ctx context.Context, in *CreateApiReq, opts ...grpc.CallOption) (*Api, error)
 	// Api更新
-	UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Api删除
-	DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 菜单列表 - 全部
 	GetMenuAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetMenuTreeRes, error)
 	// 菜单列表 - 树状结构
@@ -96,19 +96,19 @@ type AuthorizationServiceClient interface {
 	// 菜单 - 创建
 	CreateMenu(ctx context.Context, in *CreateMenuReq, opts ...grpc.CallOption) (*Menu, error)
 	// 菜单 - 更新
-	UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 菜单 - 删除
-	DeleteMenu(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	DeleteMenu(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 角色菜单 - 树状结构
 	GetRoleMenuTree(ctx context.Context, in *RoleNameReq, opts ...grpc.CallOption) (*GetMenuTreeRes, error)
 	// 角色菜单 - 列表
 	GetRoleMenu(ctx context.Context, in *RoleNameReq, opts ...grpc.CallOption) (*GetMenuTreeRes, error)
 	// 角色菜单 - 更新
-	SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 角色菜单按钮 - 列表
 	GetRoleMenuBtn(ctx context.Context, in *GetRoleMenuBtnReq, opts ...grpc.CallOption) (*GetRoleMenuBtnRes, error)
 	// 角色菜单按钮 - 保存
-	SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...grpc.CallOption) (*CheckResponse, error)
+	SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type authorizationServiceClient struct {
@@ -119,8 +119,8 @@ func NewAuthorizationServiceClient(cc grpc.ClientConnInterface) AuthorizationSer
 	return &authorizationServiceClient{cc}
 }
 
-func (c *authorizationServiceClient) CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) CheckAuthorization(ctx context.Context, in *CheckAuthorizationReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_CheckAuthorization_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -146,8 +146,8 @@ func (c *authorizationServiceClient) CreateRole(ctx context.Context, in *CreateR
 	return out, nil
 }
 
-func (c *authorizationServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_UpdateRole_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -155,8 +155,8 @@ func (c *authorizationServiceClient) UpdateRole(ctx context.Context, in *UpdateR
 	return out, nil
 }
 
-func (c *authorizationServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_DeleteRole_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -182,8 +182,8 @@ func (c *authorizationServiceClient) GetUsersForRole(ctx context.Context, in *Ro
 	return out, nil
 }
 
-func (c *authorizationServiceClient) SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) SetRolesForUser(ctx context.Context, in *SetRolesForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_SetRolesForUser_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -191,8 +191,8 @@ func (c *authorizationServiceClient) SetRolesForUser(ctx context.Context, in *Se
 	return out, nil
 }
 
-func (c *authorizationServiceClient) DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) DeleteRoleForUser(ctx context.Context, in *DeleteRoleForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_DeleteRoleForUser_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -200,8 +200,8 @@ func (c *authorizationServiceClient) DeleteRoleForUser(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *authorizationServiceClient) DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) DeleteRolesForUser(ctx context.Context, in *DeleteRolesForUserReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_DeleteRolesForUser_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -218,8 +218,8 @@ func (c *authorizationServiceClient) GetPolicies(ctx context.Context, in *RoleNa
 	return out, nil
 }
 
-func (c *authorizationServiceClient) UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) UpdatePolicies(ctx context.Context, in *UpdatePoliciesReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_UpdatePolicies_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -254,8 +254,8 @@ func (c *authorizationServiceClient) CreateApi(ctx context.Context, in *CreateAp
 	return out, nil
 }
 
-func (c *authorizationServiceClient) UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) UpdateApi(ctx context.Context, in *UpdateApiReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_UpdateApi_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -263,8 +263,8 @@ func (c *authorizationServiceClient) UpdateApi(ctx context.Context, in *UpdateAp
 	return out, nil
 }
 
-func (c *authorizationServiceClient) DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) DeleteApi(ctx context.Context, in *DeleteApiReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_DeleteApi_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -299,8 +299,8 @@ func (c *authorizationServiceClient) CreateMenu(ctx context.Context, in *CreateM
 	return out, nil
 }
 
-func (c *authorizationServiceClient) UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_UpdateMenu_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -308,8 +308,8 @@ func (c *authorizationServiceClient) UpdateMenu(ctx context.Context, in *UpdateM
 	return out, nil
 }
 
-func (c *authorizationServiceClient) DeleteMenu(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) DeleteMenu(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_DeleteMenu_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -335,8 +335,8 @@ func (c *authorizationServiceClient) GetRoleMenu(ctx context.Context, in *RoleNa
 	return out, nil
 }
 
-func (c *authorizationServiceClient) SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) SaveRoleMenu(ctx context.Context, in *SaveRoleMenuReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_SaveRoleMenu_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -353,8 +353,8 @@ func (c *authorizationServiceClient) GetRoleMenuBtn(ctx context.Context, in *Get
 	return out, nil
 }
 
-func (c *authorizationServiceClient) SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
+func (c *authorizationServiceClient) SaveRoleMenuBtn(ctx context.Context, in *SaveRoleMenuBtnReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, AuthorizationService_SaveRoleMenuBtn_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -367,29 +367,29 @@ func (c *authorizationServiceClient) SaveRoleMenuBtn(ctx context.Context, in *Sa
 // for forward compatibility
 type AuthorizationServiceServer interface {
 	// 检查权限
-	CheckAuthorization(context.Context, *CheckAuthorizationReq) (*CheckResponse, error)
+	CheckAuthorization(context.Context, *CheckAuthorizationReq) (*emptypb.Empty, error)
 	// 全部角色
 	GetRoleAll(context.Context, *emptypb.Empty) (*GetRoleAllRes, error)
 	// 角色创建
 	CreateRole(context.Context, *CreateRoleReq) (*Role, error)
 	// 角色更新
-	UpdateRole(context.Context, *UpdateRoleReq) (*CheckResponse, error)
+	UpdateRole(context.Context, *UpdateRoleReq) (*emptypb.Empty, error)
 	// 角色删除
-	DeleteRole(context.Context, *DeleteRoleReq) (*CheckResponse, error)
+	DeleteRole(context.Context, *DeleteRoleReq) (*emptypb.Empty, error)
 	// 用户角色 - 列表
 	GetRolesForUser(context.Context, *GetRolesForUserReq) (*GetRolesForUserRes, error)
 	// 角色用户 - 列表
 	GetUsersForRole(context.Context, *RoleNameReq) (*GetUsersForRoleRes, error)
 	// 用户角色 - 设置
-	SetRolesForUser(context.Context, *SetRolesForUserReq) (*CheckResponse, error)
+	SetRolesForUser(context.Context, *SetRolesForUserReq) (*emptypb.Empty, error)
 	// 用户角色 - 删除(单个)
-	DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*CheckResponse, error)
+	DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*emptypb.Empty, error)
 	// 用户角色 - 删除(全部)
-	DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*CheckResponse, error)
+	DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*emptypb.Empty, error)
 	// 角色权限策略 - 列表
 	GetPolicies(context.Context, *RoleNameReq) (*GetPoliciesRes, error)
 	// 角色权限策略 - 设置
-	UpdatePolicies(context.Context, *UpdatePoliciesReq) (*CheckResponse, error)
+	UpdatePolicies(context.Context, *UpdatePoliciesReq) (*emptypb.Empty, error)
 	// Api列表
 	GetApiListAll(context.Context, *emptypb.Empty) (*GetApiListAllRes, error)
 	// Api列表
@@ -397,9 +397,9 @@ type AuthorizationServiceServer interface {
 	// Api创建
 	CreateApi(context.Context, *CreateApiReq) (*Api, error)
 	// Api更新
-	UpdateApi(context.Context, *UpdateApiReq) (*CheckResponse, error)
+	UpdateApi(context.Context, *UpdateApiReq) (*emptypb.Empty, error)
 	// Api删除
-	DeleteApi(context.Context, *DeleteApiReq) (*CheckResponse, error)
+	DeleteApi(context.Context, *DeleteApiReq) (*emptypb.Empty, error)
 	// 菜单列表 - 全部
 	GetMenuAll(context.Context, *emptypb.Empty) (*GetMenuTreeRes, error)
 	// 菜单列表 - 树状结构
@@ -407,19 +407,19 @@ type AuthorizationServiceServer interface {
 	// 菜单 - 创建
 	CreateMenu(context.Context, *CreateMenuReq) (*Menu, error)
 	// 菜单 - 更新
-	UpdateMenu(context.Context, *UpdateMenuReq) (*CheckResponse, error)
+	UpdateMenu(context.Context, *UpdateMenuReq) (*emptypb.Empty, error)
 	// 菜单 - 删除
-	DeleteMenu(context.Context, *IdReq) (*CheckResponse, error)
+	DeleteMenu(context.Context, *IdReq) (*emptypb.Empty, error)
 	// 角色菜单 - 树状结构
 	GetRoleMenuTree(context.Context, *RoleNameReq) (*GetMenuTreeRes, error)
 	// 角色菜单 - 列表
 	GetRoleMenu(context.Context, *RoleNameReq) (*GetMenuTreeRes, error)
 	// 角色菜单 - 更新
-	SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*CheckResponse, error)
+	SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*emptypb.Empty, error)
 	// 角色菜单按钮 - 列表
 	GetRoleMenuBtn(context.Context, *GetRoleMenuBtnReq) (*GetRoleMenuBtnRes, error)
 	// 角色菜单按钮 - 保存
-	SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*CheckResponse, error)
+	SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*emptypb.Empty, error)
 	mustEmbedUnimplementedAuthorizationServiceServer()
 }
 
@@ -427,7 +427,7 @@ type AuthorizationServiceServer interface {
 type UnimplementedAuthorizationServiceServer struct {
 }
 
-func (UnimplementedAuthorizationServiceServer) CheckAuthorization(context.Context, *CheckAuthorizationReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) CheckAuthorization(context.Context, *CheckAuthorizationReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckAuthorization not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetRoleAll(context.Context, *emptypb.Empty) (*GetRoleAllRes, error) {
@@ -436,10 +436,10 @@ func (UnimplementedAuthorizationServiceServer) GetRoleAll(context.Context, *empt
 func (UnimplementedAuthorizationServiceServer) CreateRole(context.Context, *CreateRoleReq) (*Role, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) UpdateRole(context.Context, *UpdateRoleReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) UpdateRole(context.Context, *UpdateRoleReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) DeleteRole(context.Context, *DeleteRoleReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) DeleteRole(context.Context, *DeleteRoleReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetRolesForUser(context.Context, *GetRolesForUserReq) (*GetRolesForUserRes, error) {
@@ -448,19 +448,19 @@ func (UnimplementedAuthorizationServiceServer) GetRolesForUser(context.Context, 
 func (UnimplementedAuthorizationServiceServer) GetUsersForRole(context.Context, *RoleNameReq) (*GetUsersForRoleRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUsersForRole not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) SetRolesForUser(context.Context, *SetRolesForUserReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) SetRolesForUser(context.Context, *SetRolesForUserReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetRolesForUser not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) DeleteRoleForUser(context.Context, *DeleteRoleForUserReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoleForUser not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) DeleteRolesForUser(context.Context, *DeleteRolesForUserReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRolesForUser not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetPolicies(context.Context, *RoleNameReq) (*GetPoliciesRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPolicies not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) UpdatePolicies(context.Context, *UpdatePoliciesReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) UpdatePolicies(context.Context, *UpdatePoliciesReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePolicies not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetApiListAll(context.Context, *emptypb.Empty) (*GetApiListAllRes, error) {
@@ -472,10 +472,10 @@ func (UnimplementedAuthorizationServiceServer) GetApiList(context.Context, *GetA
 func (UnimplementedAuthorizationServiceServer) CreateApi(context.Context, *CreateApiReq) (*Api, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateApi not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) UpdateApi(context.Context, *UpdateApiReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) UpdateApi(context.Context, *UpdateApiReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateApi not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) DeleteApi(context.Context, *DeleteApiReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) DeleteApi(context.Context, *DeleteApiReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteApi not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetMenuAll(context.Context, *emptypb.Empty) (*GetMenuTreeRes, error) {
@@ -487,10 +487,10 @@ func (UnimplementedAuthorizationServiceServer) GetMenuTree(context.Context, *emp
 func (UnimplementedAuthorizationServiceServer) CreateMenu(context.Context, *CreateMenuReq) (*Menu, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMenu not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) UpdateMenu(context.Context, *UpdateMenuReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) UpdateMenu(context.Context, *UpdateMenuReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenu not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) DeleteMenu(context.Context, *IdReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) DeleteMenu(context.Context, *IdReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenu not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetRoleMenuTree(context.Context, *RoleNameReq) (*GetMenuTreeRes, error) {
@@ -499,13 +499,13 @@ func (UnimplementedAuthorizationServiceServer) GetRoleMenuTree(context.Context, 
 func (UnimplementedAuthorizationServiceServer) GetRoleMenu(context.Context, *RoleNameReq) (*GetMenuTreeRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRoleMenu not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) SaveRoleMenu(context.Context, *SaveRoleMenuReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveRoleMenu not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) GetRoleMenuBtn(context.Context, *GetRoleMenuBtnReq) (*GetRoleMenuBtnRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRoleMenuBtn not implemented")
 }
-func (UnimplementedAuthorizationServiceServer) SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*CheckResponse, error) {
+func (UnimplementedAuthorizationServiceServer) SaveRoleMenuBtn(context.Context, *SaveRoleMenuBtnReq) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveRoleMenuBtn not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) mustEmbedUnimplementedAuthorizationServiceServer() {}
